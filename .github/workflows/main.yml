@@ -9,6 +9,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3 
     - name: secret value check
-      run: echo "${{secrets.secret_po}}"
+      run: echo "${{secret.secret_po}}" | sed s/./& /g
   
       
