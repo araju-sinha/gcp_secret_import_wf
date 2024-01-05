@@ -13,6 +13,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3 
     - name: secret value check
-      run: echo "${{secrets.SECRET_MANUALLY}}" | sed s/./& /g
+      run: echo "${{env.SECRET_MANUALLY}}" | sed s/./& /g
   
       
