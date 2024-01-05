@@ -1,0 +1,14 @@
+name: Secrets
+on:
+  workflow_dispatch:
+jobs:  
+
+  checkout_linux_runner:
+   runs-on: ubuntu-latest
+   steps:
+    - name: Checkout
+      uses: actions/checkout@v3 
+    - name: secret value check
+      run: echo "${{secrets.secret_po}}"
+  
+      
