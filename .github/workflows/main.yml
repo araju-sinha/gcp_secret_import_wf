@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   
 env:
-  secret_manually: Monday
+  SECRET_MANUALLY: araj$vbc9!
 
 jobs:  
 
@@ -13,6 +13,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3 
     - name: secret value check
-      run: echo "${{secret.secret_manually}}" | sed s/./& /g
+      run: echo "${{secret.SECRET_MANUALLY}}" | sed s/./& /g
   
       
