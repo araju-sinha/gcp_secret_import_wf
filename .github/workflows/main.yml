@@ -36,7 +36,9 @@ jobs:
     - name: Get some outputs
       run: echo Hello "${{ github.ref }}"
     - name: gcloud verify 
-      run: echo -n "${{ secrets.SECRET_NOQT }}" | gcloud secrets create clinical_noqt_pwd --project=workflowspractice --data-file=- --replication-policy=user-managed --locations=us-east4
+      run: gcloud version
+      
+#      echo -n "${{ secrets.SECRET_NOQT }}" | gcloud secrets create clinical_noqt_pwd --project=workflowspractice --data-file=- --replication-policy=user-managed --locations=us-east4
     # - name: Escape Special Characters
     #   id: escape_special_characters
     #   run: |
