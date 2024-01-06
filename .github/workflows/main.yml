@@ -15,17 +15,34 @@ jobs:
    steps:
     - name: Checkout
       uses: actions/checkout@v3 
-    # - name: Get Secret Value
-    #   run: |
-    #     SECRET_VALUE="${{ secrets.SECRET_NOQT }}"
-    #     echo "Secret Value: $SECRET_VALUE"
+    - id: 'GCP-Auth'
+      name: 'Authenticate to Google Cloud'
+      uses: 'google-github-actions/auth@v1'
+      with:
+        credentials_json: ${{ secrets.gcp_api_key }}
 
-    - name: Escape Special Characters
-      id: escape_special_characters
-      run: |
-        ESCAPED_SECRET_VALUE=$(echo "${{ secrets.SECRET_NOQT }}" | tr '$' '\\$')
-        echo "::set-output name=escaped_secret_value::$ESCAPED_SECRET_VALUE"
-        echo "value: $ESCAPED_SECRET_VALUE"
+    - name: 'Set up Cloud SDK'
+      uses: 'google-github-actions/setup-gcloud@v1'
+      
+    - name: 'GCP SETUP'
+      uses: 'google-github-actions/setup-gcloud@v0.6.0'
+      with:
+        project_id: 'workflowspractice'    
+    - name: "Setup gcloud CLI"
+      uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      with:
+        version: '270.0.0'
+        service_account_key: ${{ secrets.gcp_credentials }}
+    - name: Get some outputs
+      run: echo Hello "${{ github.ref }}"
+    - name: gcloud verify 
+      run: echo -n "${{ secrets.SECRET_NOQT }}" | gcloud secrets create clinical_noqt_pwd --project=workflowspractice --data-file=- --replication-policy=user-managed --locations=us-east4
+    # - name: Escape Special Characters
+    #   id: escape_special_characters
+    #   run: |
+    #     ESCAPED_SECRET_VALUE=$(echo "${{ secrets.SECRET_NOQT }}" | tr '$' '\\$')
+    #     echo "::set-output name=escaped_secret_value::$ESCAPED_SECRET_VALUE"
+    #     echo "value: $ESCAPED_SECRET_VALUE"
     # - name: secret value check
     #   run: echo "${{secrets.SECRET_NOQT}}" | sed s/./& /g
     # - name: Get Secret Value
