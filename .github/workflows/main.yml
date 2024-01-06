@@ -28,11 +28,11 @@ jobs:
       uses: 'google-github-actions/setup-gcloud@v0.6.0'
       with:
         project_id: 'workflowspractice'    
-    - name: "Setup gcloud CLI"
-      uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
-      with:
-        version: '270.0.0'
-        service_account_key: ${{ secrets.gcp_credentials }}
+    # - name: "Setup gcloud CLI"
+    #   uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+    #   with:
+    #     version: '270.0.0'
+    #     service_account_key: ${{ secrets.gcp_credentials }}
     - name: Get some outputs
       run: echo Hello "${{ github.ref }}"
     - name: gcloud verify 
