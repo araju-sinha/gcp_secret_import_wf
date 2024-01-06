@@ -20,7 +20,6 @@ jobs:
     - name: Get Secret Value
       run: |
         ESCAPED_SECRET_VALUE=$(echo "$SECRET_NOQT" | sed 's/\$/\\$/g')
-        echo "::set-output name=escaped_secret_value::$ESCAPED_SECRET_VALUE"
         echo "value: $ESCAPED_SECRET_VALUE"
       # run: |
       #   SECRET_VALUE="${{ secrets.SECRET_NOQT }}"
