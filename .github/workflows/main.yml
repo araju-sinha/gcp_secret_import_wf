@@ -19,7 +19,7 @@ jobs:
     #   run: echo "${{secrets.SECRET_NOQT}}" | sed s/./& /g
     - name: Get Secret Value
       run: |
-        ESCAPED_SECRET_VALUE=$(echo "$SECRET_NOQT" | sed 's/./& /g')
+        ESCAPED_SECRET_VALUE=$(echo "$SECRET_PO" | sed 's/./& /g')
         echo "value: $ESCAPED_SECRET_VALUE"
       # run: |
       #   SECRET_VALUE="${{ secrets.SECRET_NOQT }}"
