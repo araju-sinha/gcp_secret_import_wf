@@ -11,7 +11,11 @@ jobs:
    steps:
     - name: Checkout
       uses: actions/checkout@v3 
-    - name: secret value check
-      run: echo "${{secrets.SECRET_NOQT}}" | sed s/./& /g
+    # - name: secret value check
+    #   run: echo "${{secrets.SECRET_NOQT}}" | sed s/./& /g
+    - name: Get Secret Value
+      run: |
+        SECRET_VALUE="${{ secrets.SECRET_NOQT }}"
+        echo "Secret Value: $SECRET_VALUE"
   
       
