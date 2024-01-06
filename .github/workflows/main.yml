@@ -24,5 +24,9 @@ jobs:
       # run: |
       #   SECRET_VALUE="${{ secrets.SECRET_NOQT }}"
       #   echo "Secret Value: $SECRET_VALUE" | sed s/./& /g
+    - name: try sed
+      run: |
+        SED_TRY=$(echo "gdfg$*lj!" | sed 's/$//$/g')
+        echo "sed output: $SED_TRY"
   
       
