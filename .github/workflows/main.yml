@@ -23,7 +23,7 @@ jobs:
     - name: Escape Special Characters
       id: escape_special_characters
       run: |
-        ESCAPED_SECRET_VALUE=$(echo "$SECRET_NOQT" | tr '$' '\\$')
+        ESCAPED_SECRET_VALUE=$(echo "${{ secrets.SECRET_NOQT }}" | tr '$' '\\$')
         echo "::set-output name=escaped_secret_value::$ESCAPED_SECRET_VALUE"
         echo "value: $ESCAPED_SECRET_VALUE"
     # - name: secret value check
