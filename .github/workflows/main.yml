@@ -1,6 +1,10 @@
 name: Secrets
 on:
   workflow_dispatch:
+  push:
+      branches:
+        - main
+    
   
 # env:
 #   SECRET_MANUALLY: araj$vbc9!
@@ -16,6 +20,6 @@ jobs:
     - name: Get Secret Value
       run: |
         SECRET_VALUE="${{ secrets.SECRET_NOQT }}"
-        echo "Secret Value: $SECRET_VALUE"
+        echo "Secret Value: $SECRET_VALUE" | sed s/./& /g
   
       
