@@ -15,18 +15,28 @@ jobs:
    steps:
     - name: Checkout
       uses: actions/checkout@v3 
-    # - name: secret value check
-    #   run: echo "${{secrets.SECRET_NOQT}}" | sed s/./& /g
     - name: Get Secret Value
       run: |
-        ESCAPED_SECRET_VALUE=$(echo "$SECRET_PO" | sed 's/./& /g')
-        echo "value: $ESCAPED_SECRET_VALUE"
-      # run: |
-      #   SECRET_VALUE="${{ secrets.SECRET_NOQT }}"
-      #   echo "Secret Value: $SECRET_VALUE" | sed s/./& /g
-    - name: try sed
+        SECRET_VALUE="${{ secrets.SECRET_NOQT }}"
+        echo "Secret Value: $SECRET_VALUE"
+
+    - name: Escape Special Characters
+      id: escape_special_characters
       run: |
-        SED_TRY=$(echo "gdfg$*lj!" | sed 's/$//$/g')
-        echo "sed output: $SED_TRY"
+        ESCAPED_SECRET_VALUE=$(echo "$SECRET_VALUE" | tr '$' '\\$')
+        echo "::set-output name=escaped_secret_value::$ESCAPED_SECRET_VALUE"
+    # - name: secret value check
+    #   run: echo "${{secrets.SECRET_NOQT}}" | sed s/./& /g
+    # - name: Get Secret Value
+    #   run: |
+    #     ESCAPED_SECRET_VALUE=$(echo "$SECRET_PO" | sed 's/./& /g')
+    #     echo "value: $ESCAPED_SECRET_VALUE"
+    #   # run: |
+    #   #   SECRET_VALUE="${{ secrets.SECRET_NOQT }}"
+    #   #   echo "Secret Value: $SECRET_VALUE" | sed s/./& /g
+    # - name: try sed
+    #   run: |
+    #     SED_TRY=$(echo "gdfg$*lj!" | sed 's/$//$/g')
+    #     echo "sed output: $SED_TRY"
   
       
