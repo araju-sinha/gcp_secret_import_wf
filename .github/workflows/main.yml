@@ -12,8 +12,17 @@ jobs:
    steps:
     - name: Checkout
       uses: actions/checkout@v3 
-    - name: using sed cmd
-      run: echo "${{secrets.SECRET_NOQT}}"
+    # - name: using sed cmd
+    #   run: echo "${{secrets.SECRET_NOQT}}"
+    - name: Get Secret Value
+      id: get_secret
+      run: |
+        echo "::set-output name=SECRET_VALUE::${{ secrets.SECRET_NOQT }}"
+        echo "Secret Value: ${{ secrets.SECRET_NOQT }}"
+
+    - name: Print Secret as Output
+      run: |
+        echo "Secret Value: ${{ steps.get_secret.outputs.SECRET_VALUE }}"
 
   
       
