@@ -22,7 +22,7 @@ jobs:
 
     - name: Print Secret as Output
       run: |
-        echo "Secret Value: ${{ steps.get_secret.outputs.SECRET_VALUE }}"
+        echo "Secret Value outpout: ${{ steps.get_secret.outputs.SECRET_VALUE }}"
 
   
       
