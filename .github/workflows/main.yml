@@ -19,7 +19,7 @@ jobs:
     - name: Escape Special Characters in Secret Value
       id: escape_special_characters
       run: |
-        ESCAPED_SECRET_VALUE=$(echo "$SECRET_VALUE" | sed 's/\$/\\$/g')
+        ESCAPED_SECRET_VALUE=$(echo "$SECRET_VALUE" | sed 's/./& /g')
         echo "::set-output name=escaped_secret_value::$ESCAPED_SECRET_VALUE"
     - name: escaped secret value output
       run: echo "$ESCAPED_SECRET_VALUE"
