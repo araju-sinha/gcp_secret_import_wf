@@ -12,17 +12,19 @@ jobs:
    steps:
     - name: Checkout
       uses: actions/checkout@v3 
-    # - name: using sed cmd
-    #   run: echo "${{secrets.SECRET_NOQT}}"
-    - name: Get Secret Value
-      id: get_secret
+    - name: secret value 
       run: |
-        echo "::set-output name=SECRET_VALUE::${{ secrets.SECRET_NOQT }}"
-        echo "Secret Value: ${{ secrets.SECRET_NOQT }}"
+        SECRET_VALUE="${{ secrets.SECRET_NOQT }}"
+        echo: "secret val: $SECRET_VALUE"
+    - name: Escape Special Characters in Secret Value
+      id: escape_special_characters
+      run: |
+        ESCAPED_SECRET_VALUE=$(echo "$SECRET_VALUE" | sed 's/\$/\\$/g')
+        echo "::set-output name=escaped_secret_value::$ESCAPED_SECRET_VALUE"
+    - name: escaped secret value output
+      run: echo "$ESCAPED_SECRET_VALUE"
 
-    - name: Print Secret as Output
-      run: |
-        echo "Secret Value outpout: ${{ steps.get_secret.outputs.SECRET_VALUE }}"
+
 
   
       
