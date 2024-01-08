@@ -17,7 +17,7 @@ jobs:
           SUPER_SECRET: ${{ secrets.SECRET_NOQT }}
       run: |
         sed_value="$SUPER_SECRET" | sed 's/./& /g'
-        echo $sed_value
+        echo "sed value: $sed_value"
       # run: |
       #   echo ${{secrets.SECRET_NOQT}}
       #   echo "${{secrets.SECRET_NOQT}}" | sed 's/./& /g'
