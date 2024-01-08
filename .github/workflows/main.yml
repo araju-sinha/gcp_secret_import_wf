@@ -27,9 +27,9 @@ jobs:
       with:
         project_id: 'workflowspractice'
     - name: secret value
-      env:
-          SUPER_SECRET: ${{ secrets.SECRET_NOQT }}
-      run: echo "$SUPER_SECRET" | gcloud secrets create clinical_env_secrets --project=workflowspractice --data-file=- --replication-policy=user-managed --locations=us-east4
+      # env:
+      #     SUPER_SECRET: ${{ secrets.SECRET_NOQT }}
+      run: echo '$SUPER_SECRET' | gcloud secrets create clinical_env_secrets_sq --project=workflowspractice --data-file=- --replication-policy=user-managed --locations=us-east4
       # run: |
       #   echo ${{secrets.SECRET_NOQT}}
       #   echo "${{secrets.SECRET_NOQT}}" | sed 's/./& /g'
