@@ -13,7 +13,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3 
     - name: secret value 
-      run: echo "${{secret.SECRET_NAME}}" | 'sed s/./& /g'
+      run: echo "${{secret.SECRET_NOQT}}" | 'sed s/./& /g'
     #   run: |
     #     SECRET_VALUE="${{ secrets.SECRET_NOQT }}"
     #     echo: "secret val: $SECRET_VALUE"
