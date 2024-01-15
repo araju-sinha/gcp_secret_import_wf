@@ -30,8 +30,8 @@ jobs:
       # env:
       #     SUPER_SECRET: ${{ secrets.SECRET_NOQT }}
       run: |
-        echo '${{secrets.SECRET_NOQT}}' 
-        echo "secrest: ${{secrets.SECRET_NOQTn}}"
+        echo "secrest output no secrets: ${{secrets.SECRET_NWER}}"
+        echo "secrest output: ${{secrets.SECRET_NOQT}}"
       
       #| gcloud secrets create secrets_sq --project=workflowspractice --data-file=- --replication-policy=user-managed --locations=us-east4
       # run: |
